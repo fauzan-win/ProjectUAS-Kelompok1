@@ -7,5 +7,3 @@ void daftarKata(const char *inputFile, const char *outputFile); // Function utam
 
 #endif // Penutup include guard
 
- 
-
