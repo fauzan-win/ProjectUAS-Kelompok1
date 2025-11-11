@@ -18,3 +18,15 @@ void rapihinKata(char *kata)
     kata[j] = '\0'; // Akhiri string baru
 }
 
+// Fungsi untuk cek apakah kata sudah ada di daftar
+int cekKata(const char *kata, char daftar[][50], int jumlah)
+{
+    for (int i = 0; i < jumlah; i++)
+    {
+        if (strcmp(daftar[i], kata) == 0) // Membandingkan kata dengan daftar
+        {
+            return 1; // Sudah ada
+        }
+    }
+    return 0; // Belum ada
+}
