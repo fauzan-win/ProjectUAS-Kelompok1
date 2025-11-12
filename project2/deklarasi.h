@@ -6,6 +6,3 @@ int cekKata(const char *kata, char daftar[][50], int jumlah);   // Function untu
 void daftarKata(const char *inputFile, const char *outputFile); // Function utama untuk membuat daftar kata unik dan menyimpan ke file
 
 #endif // Penutup include guard
-
- 
-

@@ -1,0 +1,7 @@
+Id    Nama                 Merek                Model                Tahun      Jumlah    
+1     Microscope           Nikon_Eclipse        TE2000               2018       5         
+2     Beaker               Pyrex                Standard             2019       28         
+3     BunsenBurner         Labo                 B200                 2017       10        
+4     Centrifuge           Eppendorf            5424                 2020       64         
+5     Pipette              Gilson               P1000                2021       13        
+6     TestTube             Pyrex                Standard             2019       50        
