@@ -32,3 +32,25 @@ int bacaAlat(AlatLab *list)
     fclose(file); // Tutup file setelah selesai dibaca
     return i;     // Kembalikan jumlah alat yang berhasil dibaca
 }
+
+// Function untuk menulis ulang seluruh isi file alat.txt
+void tulisAlat(AlatLab *list, int n)
+{
+    FILE *file = fopen("alat.txt", "w");
+    if (!file)
+    {
+        printf("Gagal menulis ke file alat.txt\n");
+        return;
+    }
+
+    fprintf(file, "%-5s %-20s %-20s %-20s %-10s %-10s\n",
+            "id", "nama", "merek", "model", "tahun", "jumlah");
+
+    for (int i = 0; i < n; i++)
+    {
+        fprintf(file, "%-5u %-20s %-20s %-20s %-10u %-10u\n",
+                list[i].id, list[i].nama, list[i].merek, list[i].model,
+                list[i].tahun, list[i].jumlah);
+    }
+    fclose(file);
+}
