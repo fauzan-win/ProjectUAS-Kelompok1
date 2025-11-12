@@ -30,3 +30,46 @@ int login(const char *username, const char *password, char *role)
     fclose(file);
     return 0; // Login gagal jika username/password tidak cocok
 }
+
+
+int main(int argc, char *argv[])
+{
+    // Validasi jumlah argumen. Harus ada 3 (program, username, password)
+    if (argc != 3)
+    {
+        printf("Format: %s <username> <password>\n", argv[0]);
+        printf("Contoh: %s admin admin123\n", argv[0]);
+        return 1; // Program dihentikan jika format salah
+    }
+
+    char role[20]; // Variabel untuk menyimpan peran (admin/user)
+
+    // Panggil fungsi login dan cek hasilnya
+    if (!login(argv[1], argv[2], role))
+    {
+        printf("Login gagal. Username atau password salah.\n");
+        return 1; // Program berhenti jika login gagal
+    }
+
+    // Jika login berhasil, tampilkan informasi role
+    printf("\nLogin berhasil. Role: %s\n", role);
+    printf("=====================================\n");
+
+    // Arahkan ke menu sesuai role pengguna
+    if (strcmp(role, "admin") == 0)
+    {
+        menuAdmin(); // Tampilkan menu admin
+    }
+    else if (strcmp(role, "user") == 0)
+    {
+        menuUser(argv[1]); // Tampilkan menu user berdasarkan username
+    }
+    else
+    {
+        printf("Role tidak dikenal. Program keluar.\n");
+        printf("=====================================\n");
+        return 1; // Hentikan program jika role tidak valid
+    }
+
+    return 0; 
+}
