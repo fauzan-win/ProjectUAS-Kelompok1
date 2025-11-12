@@ -30,3 +30,48 @@ int cekKata(const char *kata, char daftar[][50], int jumlah)
     }
     return 0; // Belum ada
 }
+
+// Fungsi utama untuk membaca lirik, pisahkan kata, simpan ke file kosa-kata
+void daftarKata(const char *inputFile, const char *outputFile)
+{
+    FILE *in = fopen(inputFile, "r");   // Membuka file input lirik
+    FILE *out = fopen(outputFile, "w"); // Membuka file output kosa-kata
+
+    if (in == NULL || out == NULL) // Cek apakah file berhasil dibuka
+    {
+        // Menampilkan pesan error jika file tidak berhasil dibuka
+        printf("Gagal membuka file input atau output\n");
+        printf("Silahkan ulangi lagi\n");
+        return;
+    }
+
+    char judul[200];
+    char baris[300];
+    char daftar[500][50]; // Buffer kata unik, maksimal 500 kata
+    int jumlahKata = 0;
+
+    // Ambil baris pertama sebagai judul lagu dan tulis ke file output
+    if (fgets(judul, sizeof(judul), in))
+    {
+        fprintf(out, "%s", judul);
+    }
+
+    // Baca sisa baris lirik
+    while (fgets(baris, sizeof(baris), in))
+    {
+        char *token = strtok(baris, " \n\r\t"); // Memisahkan kata per kata
+        while (token != NULL)
+        {
+            rapihinKata(token); // Membersihkan kata, hapus tanda baca dan lowercase kan kata
+            if (strlen(token) > 0 && !cekKata(token, daftar, jumlahKata))
+            {
+                strcpy(daftar[jumlahKata++], token); // Menyimpan kata unik (kata yang hanya ditulis sekali saja)
+                fprintf(out, "%s=\n", token);        // Menuliskan ke file
+            }
+            token = strtok(NULL, " \n\r\t"); // Lanjut ke kata berikutnya
+        }
+    }
+
+    fclose(in);  // Tutup file input
+    fclose(out); // Tutup file output
+}
