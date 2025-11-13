@@ -97,3 +97,49 @@ void tulisPinjam(Pinjam *list, int n)
     }
     fclose(file);
 }
+
+// Function untuk mengecek apakah ID alat sudah ada di list
+int cekIdAlat(unsigned int id, AlatLab *list, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        if (list[i].id == id)
+            return 1; // Jika ID ditemukan, return 1
+    }
+    return 0; // Jika belum ada, return 0
+}
+
+// ------------------- FUNCION ADMIN -------------------
+// Function untuk menambah data alat baru
+void tambahAlat()
+{
+    AlatLab list[MAX_ALAT], alat;
+    int n = bacaAlat(list); // Baca data alat yang sudah ada
+
+    printf("ID Alat baru: ");
+    scanf("%u", &alat.id);
+
+    // Cegah ID duplikat
+    if (cekIdAlat(alat.id, list, n))
+    {
+        printf("ID %u sudah ada, program akan berhenti\n", alat.id);
+        exit(1);
+    }
+
+    // Input data baru
+    printf("Nama Alat: ");
+    scanf("%s", alat.nama);
+    printf("Merek: ");
+    scanf("%s", alat.merek);
+    printf("Model: ");
+    scanf("%s", alat.model);
+    printf("Tahun: ");
+    scanf("%u", &alat.tahun);
+    printf("Jumlah: ");
+    scanf("%u", &alat.jumlah);
+
+    // Simpan data baru ke list dan tulis ke file
+    list[n++] = alat;
+    tulisAlat(list, n);
+    printf("Alat berhasil ditambahkan.\n");
+}
