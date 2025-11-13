@@ -138,7 +138,7 @@ void tambahAlat()
     printf("Jumlah: ");
     scanf("%u", &alat.jumlah);
 
-    // Simpan data baru ke list dan tulis ke file
+    // Simpan data baru ke list dan tulis ke file.
     list[n++] = alat;
     tulisAlat(list, n);
     printf("Alat berhasil ditambahkan.\n");
