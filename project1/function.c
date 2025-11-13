@@ -143,3 +143,37 @@ void tambahAlat()
     tulisAlat(list, n);
     printf("Alat berhasil ditambahkan.\n");
 }
+
+// Function untuk menghapus data alat berdasarkan ID
+void hapusAlat()
+{
+    AlatLab list[MAX_ALAT];
+    int n = bacaAlat(list);
+    unsigned int id;
+
+    printf("ID alat yang akan dihapus: ");
+    scanf("%u", &id);
+
+    int found = 0;
+    // Cari alat berdasarkan ID
+    for (int i = 0; i < n; i++)
+    {
+        if (list[i].id == id)
+        {
+            found = 1;
+            // Geser elemen ke kiri untuk hapus data
+            for (int j = i; j < n - 1; j++)
+                list[j] = list[j + 1];
+            n--;
+            break;
+        }
+    }
+
+    if (found)
+    {
+        tulisAlat(list, n); // Simpan perubahan ke file
+        printf("Alat berhasil dihapus.\n");
+    }
+    else
+        printf("ID %u tidak ditemukan.\n", id);
+}
