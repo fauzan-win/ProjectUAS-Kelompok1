@@ -54,3 +54,46 @@ void tulisAlat(AlatLab *list, int n)
     }
     fclose(file);
 }
+
+// Function untuk membaca isi file pinjam.txt
+int bacaPinjam(Pinjam *list)
+{
+    FILE *file = fopen("pinjam.txt", "r"); // Buka file pinjam.txt
+    if (!file)
+        return 0;
+
+    char buffer[100];
+    fgets(buffer, sizeof(buffer), file); // Lewati header
+
+    int i = 0;
+    // Baca data baris per baris ke struct Pinjam
+    while (fscanf(file, "%s %u %u %s",
+                  list[i].username,
+                  &list[i].idAlat,
+                  &list[i].jumlah,
+                  list[i].tanggal) == 4)
+    {
+        i++;
+    }
+    fclose(file);
+    return i;
+}
+
+// Function untuk menulis ulang file pinjam.txt
+void tulisPinjam(Pinjam *list, int n)
+{
+    FILE *file = fopen("pinjam.txt", "w"); // Buka file untuk ditulis
+    if (!file)
+        return;
+
+    fprintf(file, "username idAlat jumlah tanggal\n"); // Tulis header
+    for (int i = 0; i < n; i++)
+    {
+        fprintf(file, "%s %u %u %s\n",
+                list[i].username,
+                list[i].idAlat,
+                list[i].jumlah,
+                list[i].tanggal);
+    }
+    fclose(file);
+}
