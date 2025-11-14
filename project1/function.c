@@ -320,3 +320,51 @@ void lihatAlat()
                list[i].tahun, list[i].jumlah);
     }
 }
+
+// Function user untuk meminjam alat
+void pinjamAlat(const char *username)
+{
+    AlatLab list[MAX_ALAT];
+    Pinjam pList[MAX_PINJAM], p;
+    int nAlat = bacaAlat(list);
+    int nPinjam = bacaPinjam(pList);
+
+    unsigned int id, jumlah;
+    char tanggal[20];
+
+    lihatAlat(); // Tampilkan daftar alat
+    printf("ID alat yang dipinjam: ");
+    scanf("%u", &id);
+    printf("Jumlah: ");
+    scanf("%u", &jumlah);
+    printf("Tanggal pinjam (YYYY-MM-DD HH:MM): ");
+    scanf(" %[^\n]", tanggal);
+
+    int found = 0;
+    for (int i = 0; i < nAlat; i++)
+    {
+        if (list[i].id == id)
+        {
+            found = 1;
+            if (jumlah > list[i].jumlah)
+            {
+                printf("Jumlah melebihi stok.\n");
+                return;
+            }
+            list[i].jumlah -= jumlah;
+            tulisAlat(list, nAlat);
+
+            strcpy(p.username, username);
+            p.idAlat = id;
+            p.jumlah = jumlah;
+            strcpy(p.tanggal, tanggal);
+
+            pList[nPinjam++] = p;
+            tulisPinjam(pList, nPinjam);
+            printf("Alat berhasil dipinjam.\n");
+            break;
+        }
+    }
+    if (!found)
+        printf("ID alat tidak ditemukan.\n");
+}
