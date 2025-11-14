@@ -1,4 +1,4 @@
-#ifndef DEKLARASI_H // Include guard: mencegah header dibaca lebih dari sekali
+  #ifndef DEKLARASI_H // Include guard: mencegah header dibaca lebih dari sekali
 #define DEKLARASI_H
 
 // ------------------- STRUCT DATA -------------------

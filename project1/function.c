@@ -284,3 +284,39 @@ int validasiMenu(int pilihan, int batas)
     }
     return 1;
 }
+
+// Validasi string (nama, merek, model)
+int validasiString(const char *str)
+{
+    if (strlen(str) == 0)
+    {
+        printf("Input tidak boleh kosong.\n");
+        return 0;
+    }
+    if (strlen(str) > 50)
+    {
+        printf("Input terlalu panjang (maks 50 karakter).\n");
+        return 0;
+    }
+    return 1;
+}
+
+// ------------------- FUNCTION USER -------------------
+
+// Menampilkan daftar alat laboratorium
+void lihatAlat()
+{
+    AlatLab list[MAX_ALAT];
+    int n = bacaAlat(list);
+
+    printf("\n%-5s %-20s %-20s %-20s %-10s %-10s\n",
+           "ID", "Nama", "Merek", "Model", "Tahun", "Jumlah");
+    printf("-------------------------------------------------------------------------------------------\n");
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("%-5u %-20s %-20s %-20s %-10u %-10u\n",
+               list[i].id, list[i].nama, list[i].merek, list[i].model,
+               list[i].tahun, list[i].jumlah);
+    }
+}
