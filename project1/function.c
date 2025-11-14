@@ -257,3 +257,30 @@ int validasiTahun(unsigned int tahun)
     }
     return 1;
 }
+
+// Validasi jumlah agar tidak 0 dan tidak terlalu besar
+int validasiJumlah(unsigned int jumlah)
+{
+    if (jumlah == 0)
+    {
+        printf("Jumlah tidak boleh 0\n");
+        return 0;
+    }
+    if (jumlah > 1000)
+    {
+        printf("Jumlah terlalu besar.\n");
+        return 0;
+    }
+    return 1;
+}
+
+// Validasi pilihan menu
+int validasiMenu(int pilihan, int batas)
+{
+    if (pilihan < 1 || pilihan > batas)
+    {
+        printf("Pilihan tidak valid. Masukkan angka 1 sampai %d.\n", batas);
+        return 0;
+    }
+    return 1;
+}
