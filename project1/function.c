@@ -143,3 +143,94 @@ void tambahAlat()
     tulisAlat(list, n);
     printf("Alat berhasil ditambahkan.\n");
 }
+
+// Function untuk menghapus data alat berdasarkan ID
+void hapusAlat()
+{
+    AlatLab list[MAX_ALAT];
+    int n = bacaAlat(list);
+    unsigned int id;
+
+    printf("ID alat yang akan dihapus: ");
+    scanf("%u", &id);
+
+    int found = 0;
+    // Cari alat berdasarkan ID
+    for (int i = 0; i < n; i++)
+    {
+        if (list[i].id == id)
+        {
+            found = 1;
+            // Geser elemen ke kiri untuk hapus data
+            for (int j = i; j < n - 1; j++)
+                list[j] = list[j + 1];
+            n--;
+            break;
+        }
+    }
+
+    if (found)
+    {
+        tulisAlat(list, n); // Simpan perubahan ke file
+        printf("Alat berhasil dihapus.\n");
+    }
+    else
+        printf("ID %u tidak ditemukan.\n", id);
+}
+
+// Function untuk mengedit data alat yang sudah ada
+void editAlat()
+{
+    AlatLab list[MAX_ALAT];
+    int n = bacaAlat(list);
+    unsigned int id;
+
+    printf("ID alat yang ingin diedit: ");
+    scanf("%u", &id);
+
+    int found = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (list[i].id == id)
+        {
+            found = 1;
+            printf("Masukkan data baru (kosongkan jika tidak ingin mengubah):\n");
+
+            char buffer[50];
+            unsigned int temp;
+
+            printf("Nama baru [%s]: ", list[i].nama);
+            scanf("%s", buffer);
+            if (strlen(buffer) > 0)
+                strcpy(list[i].nama, buffer);
+
+            printf("Merek baru [%s]: ", list[i].merek);
+            scanf("%s", buffer);
+            if (strlen(buffer) > 0)
+                strcpy(list[i].merek, buffer);
+
+            printf("Model baru [%s]: ", list[i].model);
+            scanf("%s", buffer);
+            if (strlen(buffer) > 0)
+                strcpy(list[i].model, buffer);
+
+            printf("Tahun baru [%u]: ", list[i].tahun);
+            if (scanf("%u", &temp) == 1)
+                list[i].tahun = temp;
+
+            printf("Jumlah baru [%u]: ", list[i].jumlah);
+            if (scanf("%u", &temp) == 1)
+                list[i].jumlah = temp;
+
+            break;
+        }
+    }
+
+    if (found)
+    {
+        tulisAlat(list, n);
+        printf("Alat berhasil diedit.\n");
+    }
+    else
+        printf("ID %u tidak ditemukan.\n", id);
+}
