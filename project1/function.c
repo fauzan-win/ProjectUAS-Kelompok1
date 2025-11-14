@@ -234,3 +234,26 @@ void editAlat()
     else
         printf("ID %u tidak ditemukan.\n", id);
 }
+
+// ------------------- FUNCTION VALIDASI INPUT -------------------
+// Validasi agar ID tidak 0
+int validasiId(unsigned int id)
+{
+    if (id == 0)
+    {
+        printf("ID tidak boleh 0\n");
+        return 0;
+    }
+    return 1;
+}
+
+// Validasi agar tahun tetap dalam rentang logis
+int validasiTahun(unsigned int tahun)
+{
+    if (tahun < 2000 || tahun > 2025)
+    {
+        printf("Tahun harus antara 2000 sampai 2025.\n");
+        return 0;
+    }
+    return 1;
+}
