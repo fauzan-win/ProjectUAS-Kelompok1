@@ -368,3 +368,12 @@ void pinjamAlat(const char *username)
     if (!found)
         printf("ID alat tidak ditemukan.\n");
 }
+
+// Menampilkan daftar pinjaman user
+void lihatPinjaman(const char *username)
+{
+    Pinjam pList[MAX_PINJAM];
+    AlatLab aList[MAX_ALAT];
+    int nPinjam = bacaPinjam(pList);
+    int nAlat = bacaAlat(aList);
+}
