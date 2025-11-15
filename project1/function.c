@@ -376,4 +376,24 @@ void lihatPinjaman(const char *username)
     AlatLab aList[MAX_ALAT];
     int nPinjam = bacaPinjam(pList);
     int nAlat = bacaAlat(aList);
-}
+
+    int found = 0;
+    printf("\nID\tNama\tMerek\tModel\tJumlah\tTanggal\n");
+    for (int i = 0; i < nPinjam; i++)
+    {
+        if (strcmp(pList[i].username, username) == 0)
+        {
+            found = 1;
+            // Cocokkan ID alat dengan data alat
+            char *nama = "Unknown", *merek = "", *model = "";
+            for (int j = 0; j < nAlat; j++)
+            {
+                if (aList[j].id == pList[i].idAlat)
+                {
+                    nama = aList[j].nama;
+                    merek = aList[j].merek;
+                    model = aList[j].model;
+                    break;
+                }
+            }
+        }
