@@ -414,3 +414,9 @@ void kembalikanAlat(const char *username)
 
     unsigned int id, jumlah;
     int found = 0;
+    
+    lihatPinjaman(username);
+    printf("ID alat yang dikembalikan: ");
+    scanf("%u", &id);
+    printf("Jumlah yang dikembalikan: ");
+    scanf("%u", &jumlah);
