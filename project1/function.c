@@ -503,3 +503,22 @@ void menuAdmin(void)
         }
     } while (pilihan != 4);
 }
+
+// ------------------- MENU USER -------------------
+// Menampilkan menu untuk user
+void menuUser(const char *username)
+{
+    int pilihan;
+    do
+    {
+        printf("\n=====================================\n");
+        printf("            MENU USER\n");
+        printf("=====================================\n");
+        printf("1. Lihat list alat tersedia\n");
+        printf("2. Peminjaman alat\n");
+        printf("3. Lihat list alat yang dipinjam\n");
+        printf("4. Pengembalian alat\n");
+        printf("5. Keluar\n");
+        printf("=====================================\n");
+        printf("Pilih menu: ");
+        scanf("%d", &pilihan);
