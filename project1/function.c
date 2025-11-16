@@ -403,3 +403,14 @@ void lihatPinjaman(const char *username)
     if (!found)
         printf("Belum ada pinjaman untuk user %s.\n", username);
 }
+
+// Function user untuk mengembalikan alat
+void kembalikanAlat(const char *username)
+{
+    Pinjam pList[MAX_PINJAM];
+    AlatLab aList[MAX_ALAT];
+    int nPinjam = bacaPinjam(pList);
+    int nAlat = bacaAlat(aList);
+
+    unsigned int id, jumlah;
+    int found = 0;
