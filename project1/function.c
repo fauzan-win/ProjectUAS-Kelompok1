@@ -420,3 +420,38 @@ void kembalikanAlat(const char *username)
     scanf("%u", &id);
     printf("Jumlah yang dikembalikan: ");
     scanf("%u", &jumlah);
+    
+    for (int i = 0; i < nPinjam; i++)
+    {
+        if (strcmp(pList[i].username, username) == 0 && pList[i].idAlat == id)
+        {
+            if (jumlah > pList[i].jumlah)
+            {
+                printf("Jumlah melebihi yang dipinjam.\n");
+                return;
+            }
+
+            pList[i].jumlah -= jumlah;
+
+            // Tambahkan kembali stok alat
+            for (int j = 0; j < nAlat; j++)
+            {
+                if (aList[j].id == id)
+                {
+                    aList[j].jumlah += jumlah;
+                    break;
+                }
+            }
+
+            // Hapus entry pinjam jika jumlah sudah 0
+            if (pList[i].jumlah == 0)
+            {
+                for (int k = i; k < nPinjam - 1; k++)
+                    pList[k] = pList[k + 1];
+                nPinjam--;
+            }
+
+            found = 1;
+            break;
+        }
+    }
