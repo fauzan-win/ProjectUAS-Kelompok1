@@ -455,3 +455,13 @@ void kembalikanAlat(const char *username)
             break;
         }
     }
+    
+    if (found)
+    {
+        tulisPinjam(pList, nPinjam);
+        tulisAlat(aList, nAlat);
+        printf("Alat berhasil dikembalikan.\n");
+    }
+    else
+        printf("Pinjaman tidak ditemukan.\n");
+}
