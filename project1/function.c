@@ -522,3 +522,26 @@ void menuUser(const char *username)
         printf("=====================================\n");
         printf("Pilih menu: ");
         scanf("%d", &pilihan);
+        
+        switch (pilihan)
+        {
+        case 1:
+            lihatAlat();
+            break;
+        case 2:
+            pinjamAlat(username);
+            break;
+        case 3:
+            lihatPinjaman(username);
+            break;
+        case 4:
+            kembalikanAlat(username);
+            break;
+        case 5:
+            printf("Keluar dari menu user.\n");
+            break;
+        default:
+            printf("Pilihan salah.\n");
+        }
+    } while (pilihan != 5);
+}
