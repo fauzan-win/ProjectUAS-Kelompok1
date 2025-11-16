@@ -396,4 +396,10 @@ void lihatPinjaman(const char *username)
                     break;
                 }
             }
+            printf("%u\t%s\t%s\t%s\t%u\t%s\n",
+                   pList[i].idAlat, nama, merek, model, pList[i].jumlah, pList[i].tanggal);
         }
+    }
+    if (!found)
+        printf("Belum ada pinjaman untuk user %s.\n", username);
+}
