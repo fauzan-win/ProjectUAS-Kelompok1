@@ -364,7 +364,7 @@ void pinjamAlat(const char *username)
 
             pList[nPinjam++] = p;
             tulisPinjam(pList, nPinjam);
-            printf("\033[1;34mAlat berhasil dipinjam.\033[0m\n");
+            printf("\033[1;33mAlat berhasil dipinjam.\033[0m\n");
             break;
         }
     }
@@ -404,7 +404,7 @@ void lihatPinjaman(const char *username)
         }
     }
     if (!found)
-        printf("\033[1;34mBelum ada pinjaman untuk user.\033[0m\n");
+        printf("\033[1;33mBelum ada pinjaman untuk user.\033[0m\n");
 
 }
 
@@ -464,7 +464,7 @@ void kembalikanAlat(const char *username)
     {
         tulisPinjam(pList, nPinjam);
         tulisAlat(aList, nAlat);
-        printf("\033[1;34mAlat berhasil dikembalikan.\033[0m\n");
+        printf("\033[1;33mAlat berhasil dikembalikan.\033[0m\n");
     }
     else
         printf("Pinjaman tidak ditemukan.\n");
