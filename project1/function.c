@@ -309,9 +309,12 @@ void lihatAlat()
     AlatLab list[MAX_ALAT];
     int n = bacaAlat(list);
 
-    printf("\n%-5s %-20s %-20s %-20s %-10s %-10s\n",
-           "ID", "Nama", "Merek", "Model", "Tahun", "Jumlah");
-    printf("-------------------------------------------------------------------------------------------\n");
+    printf("\033[1;32m%-5s %-20s %-20s %-20s %-10s %-10s\033[0m\n",
+       "ID", "Nama", "Merek", "Model", "Tahun", "Jumlah");
+
+    printf("-----------------------------------------------------------------------------------------\n");
+
+
 
     for (int i = 0; i < n; i++)
     {
@@ -361,7 +364,7 @@ void pinjamAlat(const char *username)
 
             pList[nPinjam++] = p;
             tulisPinjam(pList, nPinjam);
-            printf("Alat berhasil dipinjam.\n");
+            printf("\033[1;34mAlat berhasil dipinjam.\033[0m\n");
             break;
         }
     }
@@ -378,7 +381,7 @@ void lihatPinjaman(const char *username)
     int nAlat = bacaAlat(aList);
 
     int found = 0;
-    printf("\nID\tNama\tMerek\tModel\tJumlah\tTanggal\n");
+    printf("\n\033[1;32mID\tNama\tMerek\tModel\tJumlah\tTanggal\033[0m\n");
     for (int i = 0; i < nPinjam; i++)
     {
         if (strcmp(pList[i].username, username) == 0)
@@ -401,7 +404,8 @@ void lihatPinjaman(const char *username)
         }
     }
     if (!found)
-        printf("Belum ada pinjaman untuk user %s.\n", username);
+        printf("\033[1;34mBelum ada pinjaman untuk user.\033[0m\n");
+
 }
 
 // Function user untuk mengembalikan alat
@@ -460,7 +464,7 @@ void kembalikanAlat(const char *username)
     {
         tulisPinjam(pList, nPinjam);
         tulisAlat(aList, nAlat);
-        printf("Alat berhasil dikembalikan.\n");
+        printf("\033[1;34mAlat berhasil dikembalikan.\033[0m\n");
     }
     else
         printf("Pinjaman tidak ditemukan.\n");
@@ -473,14 +477,14 @@ void menuAdmin(void)
     int pilihan;
     do
     {
-        printf("\n=====================================\n");
-        printf("           MENU ADMIN\n");
-        printf("=====================================\n");
-        printf("1. Tambah Alat\n");
-        printf("2. Hapus Alat\n");
-        printf("3. Edit Alat\n");
-        printf("4. Keluar\n");
-        printf("=====================================\n");
+        printf("\033[1;34m=====================================\033[0m\n");
+        printf("\033[1;33m             MENU ADMIN\033[0m\n");
+        printf("\033[1;34m=====================================\033[0m\n");
+        printf("\033[1;32m1.\033[0m Tambah Alat\n");
+        printf("\033[1;32m2.\033[0m Hapus Alat\n");
+        printf("\033[1;32m3.\033[0m Edit Alat\n");
+        printf("\033[1;31m4.\033[0m Keluar\n");
+        printf("\033[1;34m=====================================\033[0m\n");
         printf("Pilih menu: ");
         scanf("%d", &pilihan);
 
@@ -496,7 +500,7 @@ void menuAdmin(void)
             editAlat();
             break;
         case 4:
-            printf("Keluar dari menu admin.\n");
+            printf("Berhasil keluar dari menu admin.\n");
             break;
         default:
             printf("Pilihan salah.\n");
@@ -511,15 +515,15 @@ void menuUser(const char *username)
     int pilihan;
     do
     {
-        printf("\n=====================================\n");
-        printf("            MENU USER\n");
-        printf("=====================================\n");
-        printf("1. Lihat list alat tersedia\n");
-        printf("2. Peminjaman alat\n");
-        printf("3. Lihat list alat yang dipinjam\n");
-        printf("4. Pengembalian alat\n");
-        printf("5. Keluar\n");
-        printf("=====================================\n");
+        printf("\033[1;34m=====================================\033[0m\n");
+        printf("\033[1;33m             MENU USER\033[0m\n");
+        printf("\033[1;34m=====================================\033[0m\n");
+        printf("\033[1;32m1.\033[0m Lihat list alat tersedia\n");
+        printf("\033[1;32m2.\033[0m Peminjaman alat\n");
+        printf("\033[1;32m3.\033[0m Lihat list alat yang dipinjam\n");
+        printf("\033[1;32m4.\033[0m Pengembalian alat\n");
+        printf("\033[1;31m5.\033[0m Keluar\n");
+        printf("\033[1;34m=====================================\033[0m\n");
         printf("Pilih menu: ");
         scanf("%d", &pilihan);
         
@@ -538,7 +542,7 @@ void menuUser(const char *username)
             kembalikanAlat(username);
             break;
         case 5:
-            printf("Keluar dari menu user.\n");
+            printf("Berhasil keluar dari menu user.\n");
             break;
         default:
             printf("Pilihan salah.\n");

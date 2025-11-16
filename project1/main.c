@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
 
     // Jika login berhasil, tampilkan informasi role
     printf("\nLogin berhasil. Role: %s\n", role);
-    printf("=====================================\n");
+    printf("\033[1;34m=====================================\033[0m\n");
 
     // Arahkan ke menu sesuai role pengguna
     if (strcmp(role, "admin") == 0)
@@ -67,7 +67,7 @@ int main(int argc, char *argv[])
     else
     {
         printf("Role tidak dikenal. Program keluar.\n");
-        printf("=====================================\n");
+        printf("\033[1;34m=====================================\033[0m\n");
         return 1; // Hentikan program jika role tidak valid
     }
 
